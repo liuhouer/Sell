@@ -159,7 +159,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     @Transactional
     public OrderDTO finish(OrderDTO orderDTO) {
-        //判断订单状态
+        //判断订单状态s
         if (!orderDTO.getOrderStatus().equals(OrderStatusEnum.NEW.getCode())) {
             logger.error("【完结订单】 订单状态不正确 orderId={},orderStatus={}", orderDTO.getOrderId(), orderDTO.getOrderStatus());
             throw new SellException(ResultEnum.ORDER_STATUS_ERROR);
