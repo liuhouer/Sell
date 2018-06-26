@@ -1,5 +1,6 @@
 package com.example.sell.dataobject;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ import java.util.Date;
 @Entity
 //动态更新,当出现了数据更新的时候，createTime，updateTime就会更新
 @DynamicUpdate
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
 public class ProductCategory {
     //类目id
     @Id
@@ -22,9 +24,9 @@ public class ProductCategory {
     //类目类型
     private Integer categoryType;
     //创建时间
-    private Date createTime;
+    private Date createTime = new Date();
     //修改时间
-    private Date updateTime;
+    private Date updateTime = new Date();
 
     public Integer getCategoryId() {
         return categoryId;

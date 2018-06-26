@@ -2,6 +2,7 @@ package com.example.sell.form;
 
 import javax.validation.constraints.NotEmpty;
 
+//卖家下单的form参数
 public class OrderForm {
     //买家姓名
     @NotEmpty(message = "姓名必填")

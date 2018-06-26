@@ -3,7 +3,9 @@ package com.example.sell.dto;
 import com.example.sell.dataobject.OrderDetail;
 import com.example.sell.enums.OrderStatusEnum;
 import com.example.sell.enums.PayStatusEnum;
+import com.example.sell.utils.EnumUtil;
 import com.example.sell.utils.serializer.Data2LongSerializer;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -28,9 +30,9 @@ public class OrderDTO {
     //订单总金额
     private BigDecimal orderAmount;
     //订单状态,默认为新下单
-    private Integer orderStatus ;
+    private Integer orderStatus;
     //支付状态,默认为未支付
-    private Integer payStatus ;
+    private Integer payStatus;
     //创建时间
     @JsonSerialize(using = Data2LongSerializer.class)
     private Date createTime;
@@ -143,5 +145,15 @@ public class OrderDTO {
 
     public void setOrderDetailList(List<OrderDetail> orderDetailList) {
         this.orderDetailList = orderDetailList;
+    }
+
+    @JsonIgnore
+    public OrderStatusEnum getOrderStatusEnum() {
+        return EnumUtil.getByCode(orderStatus, OrderStatusEnum.class);
+    }
+
+    @JsonIgnore
+    public PayStatusEnum getPayStatusEnum() {
+        return EnumUtil.getByCode(payStatus, PayStatusEnum.class);
     }
 }

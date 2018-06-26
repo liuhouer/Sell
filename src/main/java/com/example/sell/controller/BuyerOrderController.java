@@ -24,6 +24,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 买家订单相关
+ */
 @RestController
 @RequestMapping("/buyer/order")
 public class BuyerOrderController {
@@ -34,6 +37,7 @@ public class BuyerOrderController {
 
     @Autowired
     private BuyerService buyerService;
+
 
     //创建订单
     @PostMapping("/create")

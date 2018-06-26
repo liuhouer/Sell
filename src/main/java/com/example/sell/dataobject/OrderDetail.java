@@ -1,5 +1,8 @@
 package com.example.sell.dataobject;
 
+import com.example.sell.utils.serializer.Data2LongSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.math.BigDecimal;
@@ -22,8 +25,10 @@ public class OrderDetail {
     //商品图片
     private String productIcon;
     //创建时间
+    @JsonSerialize(using = Data2LongSerializer.class)
     private Date createTime;
     //修改时间
+    @JsonSerialize(using = Data2LongSerializer.class)
     private Date updateTime;
 
     @Override

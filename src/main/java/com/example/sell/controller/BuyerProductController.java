@@ -20,6 +20,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * 卖家商品相关
+ */
 @RestController
 @RequestMapping("/buyer/product")
 public class BuyerProductController {
@@ -28,6 +31,10 @@ public class BuyerProductController {
     @Autowired
     private CategoryService categoryService;
 
+    /**
+     * 获取所有商品
+     * @return
+     */
     @GetMapping("/list")
     public ResultVO list() {
         //1.查询所有的上架商品

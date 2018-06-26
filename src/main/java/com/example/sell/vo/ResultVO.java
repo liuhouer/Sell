@@ -10,14 +10,27 @@ public class ResultVO<T> {
     private Integer code;
     //提示信息
     private String msg;
+
+    public String getAllSize() {
+        return allSize;
+    }
+
+    public void setAllSize(String allSize) {
+        this.allSize = allSize;
+    }
+
+    //提示信息
+    private String allSize;
     //具体数据
     private T data;
+
 
     @Override
     public String toString() {
         return "ResultVO{" +
                 "code=" + code +
                 ", msg='" + msg + '\'' +
+                ", allSize='" + allSize + '\'' +
                 ", data=" + data +
                 '}';
     }

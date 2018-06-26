@@ -2,6 +2,7 @@ package com.example.sell.service;
 
 import com.example.sell.dataobject.ProductInfo;
 import com.example.sell.dto.CartDTO;
+import com.example.sell.vo.ProductInfoVO;
 import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -35,4 +36,10 @@ public interface ProductService {
 
     //减库存
     void decreaseStock(List<CartDTO> cartDTOS);
+
+    //上架
+    ProductInfo onSale(String productId);
+
+    //下架
+    ProductInfo offSale(String productId);
 }

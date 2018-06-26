@@ -119,4 +119,17 @@ public class OrderServiceImplTest {
         System.out.print("--------------------\n");
 
     }
+
+    @Test
+    @Transactional
+    public void list() {
+        Page<OrderDTO> orderDTOPage = orderService.findList(PageRequest.of(0, 10));
+        System.out.print("--------------------\n");
+        for (int i = 0; i < orderDTOPage.getContent().size(); i++) {
+            System.out.print(orderDTOPage.getContent().get(i) + "\n");
+        }
+
+        System.out.print("--------------------\n");
+
+    }
 }
