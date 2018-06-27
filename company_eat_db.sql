@@ -11,7 +11,7 @@
  Target Server Version : 80011
  File Encoding         : 65001
 
- Date: 26/06/2018 16:57:38
+ Date: 27/06/2018 17:38:23
 */
 
 SET NAMES utf8mb4;
@@ -52,6 +52,7 @@ INSERT INTO `order_detail` VALUES ('1529918676524665816', '1529918676480297676',
 INSERT INTO `order_detail` VALUES ('1529918731409542816', '1529918731366463787', '123456', '麻辣烫', 3.20, 2, 'http:img.png', '2018-06-25 17:25:31', '2018-06-25 17:25:31');
 INSERT INTO `order_detail` VALUES ('1529981556864195618', '1529981556823217990', '123456', '麻辣烫', 3.20, 2, 'http:img.png', '2018-06-26 10:52:37', '2018-06-26 10:52:37');
 INSERT INTO `order_detail` VALUES ('1529982220972924933', '1529982220954977033', '123456', '麻辣烫', 3.20, 2, 'http:img.png', '2018-06-26 11:03:41', '2018-06-26 11:03:41');
+INSERT INTO `order_detail` VALUES ('1530091926921850423', '1530091926896164503', '123456', '麻辣烫', 3.20, 2, 'http:img.png', '2018-06-27 17:32:07', '2018-06-27 17:32:07');
 
 -- ----------------------------
 -- Table structure for order_master
@@ -88,6 +89,7 @@ INSERT INTO `order_master` VALUES ('1529918676480297676', '张三', '18598745612
 INSERT INTO `order_master` VALUES ('1529918731366463787', '张三', '18598745612', '慕课网总部', '123456789', 6.40, 0, 0, '2018-06-25 17:25:31', '2018-06-25 17:25:31');
 INSERT INTO `order_master` VALUES ('1529981556823217990', '张三', '18598745612', '慕课网总部', '123456789', 6.40, 2, 0, '2018-06-26 10:52:37', '2018-06-26 11:18:53');
 INSERT INTO `order_master` VALUES ('1529982220954977033', '张三', '18598745612', '慕课网总部', '123456789', 6.40, 1, 0, '2018-06-26 11:03:41', '2018-06-26 13:34:57');
+INSERT INTO `order_master` VALUES ('1530091926896164503', '张三', '18598745612', '慕课网总部', '123456789', 6.40, 0, 0, '2018-06-27 17:32:07', '2018-06-27 17:32:07');
 
 -- ----------------------------
 -- Table structure for product_category
@@ -101,7 +103,7 @@ CREATE TABLE `product_category`  (
   `update_time` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间,',
   PRIMARY KEY (`category_id`) USING BTREE,
   UNIQUE INDEX `uqe_category_type`(`category_type`) USING BTREE COMMENT 'unique key 主要是用来防止数据插入的时候重复的'
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '类目表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '类目表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of product_category
@@ -140,5 +142,25 @@ INSERT INTO `product_info` VALUES ('1530000436474506929', '雪碧', 5.00, 100, '
 INSERT INTO `product_info` VALUES ('product2', '名称', 21.00, 25, '这个很好哦', 'http://xxxaaaa.png', 1, '2018-06-20 11:25:05', '2018-06-20 14:18:38', 0);
 INSERT INTO `product_info` VALUES ('product3', '麻婆豆腐', 21.00, 25, '这个很好哦', 'http://xxxaaaa.png', 1, '2018-06-20 11:25:05', '2018-06-20 14:18:38', 0);
 INSERT INTO `product_info` VALUES ('product4', '水煮鱼', 21.00, 25, '这个很好哦', 'http://xxxaaaa.png', 2, '2018-06-20 11:25:05', '2018-06-26 14:25:27', 0);
+
+-- ----------------------------
+-- Table structure for seller_info
+-- ----------------------------
+DROP TABLE IF EXISTS `seller_info`;
+CREATE TABLE `seller_info`  (
+  `seller_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `username` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `password` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `openid` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '微信openid',
+  `create_time` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
+  PRIMARY KEY (`seller_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '卖家信息表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of seller_info
+-- ----------------------------
+INSERT INTO `seller_info` VALUES ('1530005581262377502', 'admin', 'admin', 'abc', '2018-06-26 17:33:01', '2018-06-26 17:33:01');
+INSERT INTO `seller_info` VALUES ('1530005581262377509', 'test', 'test', 'bcd', '2018-06-26 17:33:01', '2018-06-26 17:33:01');
 
 SET FOREIGN_KEY_CHECKS = 1;

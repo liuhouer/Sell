@@ -52,9 +52,6 @@ public class SellerCategoryController {
         } catch (SellException e) {
             logger.error("【获取类目失败】 e={}", e);
             return ResultVOUtil.error(e.getCode(), e.getMessage());
-        } catch (Exception e) {
-            logger.error("【获取类目失败】 e={}", e);
-            return ResultVOUtil.error(500, e.getMessage());
         }
 
         return ResultVOUtil.success(productCategory);
@@ -82,9 +79,6 @@ public class SellerCategoryController {
         } catch (SellException e) {
             logger.error("【保存类目失败】 e={}", e);
             return ResultVOUtil.error(e.getCode(), e.getMessage());
-        } catch (Exception e){
-            logger.error("【保存类目失败】 e={}", e);
-            return ResultVOUtil.error(500, e.getMessage());
         }
 
         return ResultVOUtil.success();

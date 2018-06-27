@@ -140,9 +140,6 @@ public class SellerProductController {
         } catch (SellException e) {
             logger.error("【保存商品失败】 e={}", e);
             return ResultVOUtil.error(e.getCode(), e.getMessage());
-        } catch (Exception e){
-            logger.error("【保存商品失败】 e={}", e);
-            return ResultVOUtil.error(500, e.getMessage());
         }
 
         return ResultVOUtil.success();

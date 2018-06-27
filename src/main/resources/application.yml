@@ -9,6 +9,11 @@ spring:
 #    加了这句然后为null的东西就不会返回，比如orderDetailList为null就不会返回了
   jackson:
     default-property-inclusion: non_null
+  redis:
+    host: 192.168.30.113
+    port: 6379
+    password: 123456
 server:
   servlet:
     context-path: /sell
+

@@ -3,6 +3,7 @@ package com.example.sell.controller;
 import com.example.sell.converter.OrderForm2OrderDTOConverter;
 import com.example.sell.dto.OrderDTO;
 import com.example.sell.enums.ResultEnum;
+import com.example.sell.exception.ResponseBankException;
 import com.example.sell.exception.SellException;
 import com.example.sell.form.OrderForm;
 import com.example.sell.service.BuyerService;
@@ -69,6 +70,7 @@ public class BuyerOrderController {
         if (StringUtils.isEmpty(openid)) {
             logger.error("【查询订单列表】 openid为空");
             throw new SellException(ResultEnum.PARAM_ERROR);
+//            throw new ResponseBankException();
         }
         PageRequest request = PageRequest.of(page, size);
         Page<OrderDTO> orderDTOPage = orderService.findList(openid, request);
