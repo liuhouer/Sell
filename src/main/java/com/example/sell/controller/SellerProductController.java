@@ -17,6 +17,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.util.StringUtils;
@@ -122,6 +124,10 @@ public class SellerProductController {
      * @return
      */
     @PostMapping("/save")
+    //使用redis缓存，每次都会执行这个方法，但会把每次返回的结果放入到redis中，保证所有的数据都是最新的
+    @CachePut(cacheNames = "product", key = "123")
+    //使用redis缓存，每次都会执行这个方法，但会把之前的数据清除，然后将最新的数据放入redis中，一般适用于前后端不分离的项目中
+//    @CacheEvict(cacheNames = "product", key = "123")
     public ResultVO save(@Valid ProductForm productForm, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             logger.error("【创建商品】 参数不正确 ,orderForm{}", productForm);

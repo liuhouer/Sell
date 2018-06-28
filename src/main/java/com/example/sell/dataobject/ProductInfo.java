@@ -8,6 +8,7 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -17,7 +18,9 @@ import java.util.Date;
 @Entity
 @DynamicUpdate
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
-public class ProductInfo {
+public class ProductInfo implements Serializable {
+
+    private static final long serialVersionUID = -1190387803281190792L;
     @Id
     private String productId;
     //产品名称

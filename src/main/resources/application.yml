@@ -1,19 +1,4 @@
 spring:
-  datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    username: root
-    password: 123
-    url: jdbc:mysql://localhost:3306/company_eat_db?useUnicode=true&characterEncoding=utf8&useSSL=false
-  jpa:
-    show-sql: true
-#    加了这句然后为null的东西就不会返回，比如orderDetailList为null就不会返回了
-  jackson:
-    default-property-inclusion: non_null
-  redis:
-    host: 192.168.30.113
-    port: 6379
-    password: 123456
-server:
-  servlet:
-    context-path: /sell
-
+  profiles:
+#  默认使用dev
+    active: dev

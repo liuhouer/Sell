@@ -10,6 +10,7 @@ import com.example.sell.vo.ProductVO;
 import com.example.sell.vo.ResultVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,9 +34,15 @@ public class BuyerProductController {
 
     /**
      * 获取所有商品
+     *
      * @return
      */
     @GetMapping("/list")
+    //假设sellerId为该方法的参数,condition为如果sellerId的长度大于3，则进行缓存，不大于3不缓存
+    //unless为如果result的code不为0则不缓存(为0缓存，不为0不缓存)
+//    @Cacheable(cacheNames = "product", key = "#sellerId", condition = "#sellerId.length()>3",unless = "#result.getCode() != 0")
+    //增加redis缓存，使用该缓存之后，第一次访问会进入该接口中，第二次访问就会从redis中访问
+    @Cacheable(cacheNames = "product", key = "123")
     public ResultVO list() {
         //1.查询所有的上架商品
         List<ProductInfo> productInfoList = productService.findUpAll();
