@@ -62,6 +62,12 @@
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
+        <!-- 添加thymeleaf，支持页面跳转 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
         <!--将get,set方法简化-->
         <!--<dependency>-->
             <!--<groupId>org.projectlombok</groupId>-->
