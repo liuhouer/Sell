@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
@@ -43,7 +44,7 @@ public class BuyerOrderController {
     //创建订单
     @PostMapping("/create")
     public ResultVO<Map<String, String>> create(@Valid OrderForm orderForm, BindingResult bindingResult) {
-
+        logger.info("yc-orderForm:" + orderForm.toString());
         if (bindingResult.hasErrors()) {
             logger.error("【创建订单】 参数不正确 ,orderForm{}", orderForm);
             throw new SellException(ResultEnum.PARAM_ERROR.getCode(), bindingResult.getFieldError().getDefaultMessage());
@@ -72,10 +73,11 @@ public class BuyerOrderController {
             throw new SellException(ResultEnum.PARAM_ERROR);
 //            throw new ResponseBankException();
         }
-        PageRequest request = PageRequest.of(page, size);
+        Sort sort = new Sort(Sort.Direction.DESC, "createTime");
+        PageRequest request = PageRequest.of(page, size, sort);
         Page<OrderDTO> orderDTOPage = orderService.findList(openid, request);
 
-        return ResultVOUtil.success(orderDTOPage.getContent());
+        return ResultVOUtil.success(orderDTOPage.getTotalElements() + "", orderDTOPage.getContent());
     }
 
     //订单详情
@@ -88,8 +90,11 @@ public class BuyerOrderController {
 
     //取消订单
     @PostMapping("/cancel")
+    //@RequestBody 加入这个那么参数就是一个map（@RequestBody Map map），解析时就从map中获取数据进行解析
     public ResultVO cancel(@RequestParam("openid") String openid,
                            @RequestParam("orderId") String orderId) {
+        logger.info(openid);
+        logger.info(orderId);
         buyerService.cancelOrder(openid, orderId);
         return ResultVOUtil.success();
     }

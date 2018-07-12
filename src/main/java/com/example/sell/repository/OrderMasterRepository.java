@@ -3,9 +3,11 @@ package com.example.sell.repository;
 import com.example.sell.dataobject.OrderMaster;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface OrderMasterRepository extends JpaRepository<OrderMaster,String> {
     Page<OrderMaster> findByBuyerOpenid(String buyerOpenid, Pageable pageable);
 
+//    Page<OrderMaster> findByCreateTimeFalse(Pageable pageable, Sort sort);
 }

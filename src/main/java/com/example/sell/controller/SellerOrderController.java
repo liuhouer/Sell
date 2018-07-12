@@ -30,6 +30,7 @@ public class SellerOrderController {
 
     /**
      * 获取所有订单
+     *
      * @param page
      * @param size
      * @return
@@ -44,6 +45,7 @@ public class SellerOrderController {
 
     /**
      * 取消订单
+     *
      * @param orderId
      * @return
      */
@@ -61,11 +63,12 @@ public class SellerOrderController {
 
     /**
      * 订单详情
+     *
      * @param orderId
      * @return
      */
     @GetMapping("/detail")
-    public ResultVO detail(@RequestParam("orderId") String orderId){
+    public ResultVO detail(@RequestParam("orderId") String orderId) {
         OrderDTO orderDTO;
         try {
             orderDTO = orderService.findOne(orderId);
@@ -73,16 +76,17 @@ public class SellerOrderController {
             logger.error("【卖家端查看订单详情】 发生异常,Exception={}", e);
             return ResultVOUtil.error(e.getCode(), e.getMessage());
         }
-        return  ResultVOUtil.success(orderDTO);
+        return ResultVOUtil.success(orderDTO);
     }
 
     /**
      * 结束订单
+     *
      * @param orderId
      * @return
      */
     @GetMapping("/finish")
-    public ResultVO finish(@RequestParam("orderId") String orderId){
+    public ResultVO finish(@RequestParam("orderId") String orderId) {
         OrderDTO orderDTO;
         try {
             orderDTO = orderService.findOne(orderId);
@@ -91,6 +95,6 @@ public class SellerOrderController {
             logger.error("【卖家端完成订单】 发生异常,Exception={}", e);
             return ResultVOUtil.error(e.getCode(), e.getMessage());
         }
-        return  ResultVOUtil.success();
+        return ResultVOUtil.success();
     }
 }

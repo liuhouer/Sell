@@ -1,5 +1,9 @@
 package com.example.sell.utils;
 
+import com.example.sell.aspect.SellerAuthorizeAspect;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,6 +14,7 @@ import java.util.Map;
  * cookie工具类
  */
 public class CookieUtil {
+    public static final Logger logger = LoggerFactory.getLogger(CookieUtil.class);
 
     /**
      * 设置cookie
@@ -36,6 +41,9 @@ public class CookieUtil {
     public static Cookie getCookie(HttpServletRequest request,
                                    String name) {
         Map<String, Cookie> cookieMap = readCookieMap(request);
+        for (String key : cookieMap.keySet()) {
+            logger.info("key= " + key + " and value= " + cookieMap.get(key));
+        }
 
         if (cookieMap.containsKey(name)) {
             return cookieMap.get(name);
@@ -53,8 +61,10 @@ public class CookieUtil {
     private static Map<String, Cookie> readCookieMap(HttpServletRequest request) {
         Map<String, Cookie> cookieMap = new HashMap<>();
         Cookie[] cookies = request.getCookies();
+        logger.info((cookies == null) + "");
         if (cookies != null) {
             for (Cookie cookie : cookies) {
+                logger.info(cookie.getName());
                 cookieMap.put(cookie.getName(), cookie);
             }
         }

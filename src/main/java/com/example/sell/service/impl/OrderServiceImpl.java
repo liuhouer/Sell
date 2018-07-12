@@ -12,6 +12,7 @@ import com.example.sell.enums.ResultEnum;
 import com.example.sell.exception.SellException;
 import com.example.sell.repository.OrderDetailRepository;
 import com.example.sell.repository.OrderMasterRepository;
+import com.example.sell.service.BuyerService;
 import com.example.sell.service.OrderService;
 import com.example.sell.service.ProductService;
 import com.example.sell.utils.JsonUtil;
@@ -23,6 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
@@ -47,6 +49,8 @@ public class OrderServiceImpl implements OrderService {
     private OrderDetailRepository orderDetailRepository;
     @Autowired
     private OrderMasterRepository orderMasterRepository;
+    @Autowired
+    private BuyerService buyerService;
 
     @Override
     public OrderDTO create(OrderDTO orderDTO) {
@@ -115,9 +119,15 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Page<OrderDTO> findList(String buyerOpenId, Pageable pageable) {
+
         Page<OrderMaster> orderMasterPage = orderMasterRepository.findByBuyerOpenid(buyerOpenId, pageable);
 
         List<OrderDTO> orderDTOList = OrderMaster2OrderDTOConverter.convert(orderMasterPage.getContent());
+
+//        for (OrderDTO orderDTO:orderDTOList) {
+//            List<OrderDetail> orderDetailList = orderDetailRepository.findByOrderId(orderDTO.getOrderId());
+//            orderDTO.setOrderDetailList(orderDetailList);
+//        }
         return new PageImpl<OrderDTO>(orderDTOList, pageable, orderMasterPage.getTotalElements());
     }
 
@@ -185,7 +195,7 @@ public class OrderServiceImpl implements OrderService {
             throw new SellException(ResultEnum.ORDER_STATUS_ERROR);
         }
         //修改支付状态
-        if(!orderDTO.getPayStatus().equals(PayStatusEnum.WAIT.getCode())){
+        if (!orderDTO.getPayStatus().equals(PayStatusEnum.WAIT.getCode())) {
             logger.error("【订单支付完成】 订单支付状态不正确 orderDTO={}", orderDTO);
             throw new SellException(ResultEnum.ORDER_PAY_STATUS_ERROR);
         }
@@ -204,6 +214,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Page<OrderDTO> findList(Pageable pageable) {
+//        Sort sort = new Sort(Sort.Direction.DESC, "createTime");
         Page<OrderMaster> orderMasterPage = orderMasterRepository.findAll(pageable);
         List<OrderDTO> orderDTOList = OrderMaster2OrderDTOConverter.convert(orderMasterPage.getContent());
         return new PageImpl<OrderDTO>(orderDTOList, pageable, orderMasterPage.getTotalElements());

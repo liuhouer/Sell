@@ -23,7 +23,7 @@ public class ResultVO<T> implements Serializable {
         this.allSize = allSize;
     }
 
-    //提示信息
+    //总共多少条数据
     private String allSize;
     //具体数据
     private T data;

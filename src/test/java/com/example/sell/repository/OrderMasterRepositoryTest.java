@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
@@ -39,12 +40,13 @@ public class OrderMasterRepositoryTest {
 
     @Test
     public void findByBuyerOpenid() {
-        PageRequest request = PageRequest.of(0, 10);
+        Sort sort = new Sort(Sort.Direction.DESC, "createTime");
+        PageRequest request = PageRequest.of(0, 10, sort);
         Page<OrderMaster> result = repository.findByBuyerOpenid("110110", request);
         List<OrderMaster> list = result.getContent();
         System.out.print("-------------\n");
         for (OrderMaster orderMaster : list) {
-        System.out.print(orderMaster.toString()+"\n");
+            System.out.print(orderMaster.toString() + "\n");
         }
         System.out.print("-------------\n");
 //        System.out.print(result.getTotalElements());
