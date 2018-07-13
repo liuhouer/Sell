@@ -1,12 +1,5 @@
 package com.example.sell.controller;
 
-import com.example.sell.dataobject.SellerInfo;
-import com.example.sell.service.SellerService;
-import com.example.sell.service.impl.BuyerServiceImpl;
-import com.example.sell.utils.ResultVOUtil;
-import com.example.sell.vo.ResultVO;
-import me.chanjar.weixin.mp.api.WxMpService;
-import me.chanjar.weixin.mp.api.impl.WxMpServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
 //如果前后端不分离的话是Controller
-//@Controller
-@RestController
-@RequestMapping("/buyer/product")
+@Controller
+//@RestController
+//@RequestMapping("/buyer/product")
 public class FileController {
     //跳转到上传文件的页面
     @RequestMapping(value = "/gouploadimg", method = RequestMethod.GET)
@@ -24,9 +24,9 @@ public class FileController {
     //处理文件上传
     @RequestMapping(value = "/testuploadimg", method = RequestMethod.POST)
     //如果前后端不分离的话是需要加上ResponseBody
-//    public @ResponseBody
-    public String uploadImg(@RequestParam("file") MultipartFile file,
-                            HttpServletRequest request) {
+    public @ResponseBody
+    String uploadImg(@RequestParam("file") MultipartFile file,
+                     HttpServletRequest request) {
         String contentType = file.getContentType();
         String fileName = file.getOriginalFilename();
         /*System.out.println("fileName-->" + fileName);

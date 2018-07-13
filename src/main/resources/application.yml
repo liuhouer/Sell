@@ -1,4 +1,0 @@
-spring:
-  profiles:
-#  默认使用dev
-    active: dev

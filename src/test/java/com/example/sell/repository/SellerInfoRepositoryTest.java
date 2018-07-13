@@ -28,22 +28,22 @@ public class SellerInfoRepositoryTest {
 
     @Test
     public void saveTest() {
-        SellerInfo sellerInfo = new SellerInfo();
-        sellerInfo.setSellerId(KeyUtil.genUniqueKey());
-        sellerInfo.setUsername("admin");
-        sellerInfo.setPassword("admin");
-        Date date = new Date();
-        sellerInfo.setCreateTime(date);
-        sellerInfo.setUpdateTime(date);
-        sellerInfo.setOpenid("abc");
-        sellerInfoRepository.save(sellerInfo);
+//        SellerInfo sellerInfo = new SellerInfo();
+//        sellerInfo.setSellerId(KeyUtil.genUniqueKey());
+//        sellerInfo.setUsername("admin");
+//        sellerInfo.setPassword("admin");
+//        Date date = new Date();
+//        sellerInfo.setCreateTime(date);
+//        sellerInfo.setUpdateTime(date);
+//        sellerInfo.setOpenid("abc");
+//        sellerInfoRepository.save(sellerInfo);
     }
 
     @Test
     public void findByOpenid() {
-        SellerInfo sellerInfo = sellerInfoRepository.findByOpenid("abc");
-        System.out.print("-----------------\n");
-        System.out.print(sellerInfo.toString() + "\n");
-        System.out.print("-----------------\n");
+//        SellerInfo sellerInfo = sellerInfoRepository.findByOpenid("abc");
+//        System.out.print("-----------------\n");
+//        System.out.print(sellerInfo.toString() + "\n");
+//        System.out.print("-----------------\n");
     }
 }
