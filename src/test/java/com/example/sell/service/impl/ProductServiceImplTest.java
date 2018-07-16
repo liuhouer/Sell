@@ -29,44 +29,44 @@ public class ProductServiceImplTest {
     @Test
     @Transactional
     public void findOne() {
-//        ProductInfo productInfo = productService.findOne("123456");
-//        System.out.print("-------------\n");
-//        System.out.print(productInfo.toString() + "\n");
-//        System.out.print("-------------\n");
+        ProductInfo productInfo = productService.findOne("123456");
+        System.out.print("-------------\n");
+        System.out.print(productInfo.toString() + "\n");
+        System.out.print("-------------\n");
     }
 
     @Test
     public void findUpAll() {
-//        List<ProductInfo> productInfo = productService.findUpAll();
-//        System.out.print("-------------\n");
-//        System.out.print(productInfo.size() + "\n");
-//        System.out.print("-------------\n");
+        List<ProductInfo> productInfo = productService.findUpAll();
+        System.out.print("-------------\n");
+        System.out.print(productInfo.size() + "\n");
+        System.out.print("-------------\n");
     }
 
     @Test
     public void findAllProduct() {
-//        PageRequest request = PageRequest.of(0, 2);
-//        Page<ProductInfo> productInfo = productService.findAllProduct(request);
-//        System.out.print("-------------\n");
-//        System.out.print(productInfo.getTotalPages() + "\n");
-//        System.out.print(productInfo.getContent().size() + "\n");
-//        System.out.print("-------------\n");
+        PageRequest request = PageRequest.of(0, 2);
+        Page<ProductInfo> productInfo = productService.findAllProduct(request);
+        System.out.print("-------------\n");
+        System.out.print(productInfo.getTotalPages() + "\n");
+        System.out.print(productInfo.getContent().size() + "\n");
+        System.out.print("-------------\n");
     }
 
     @Test
     public void save() {
-//        ProductInfo productInfo = new ProductInfo();
-//        Date date = new Date();
-//        productInfo.setCreateTime(date);
-//        productInfo.setUpdateTime(date);
-//        productInfo.setProductStock(25);
-//        productInfo.setProductStatus(ProductStatusEnum.DOWN.getCode());
-//        productInfo.setProductPrice(new BigDecimal(21));
-//        productInfo.setProductName("名称");
-//        productInfo.setProductId("product2");
-//        productInfo.setProductIcon("http://xxxaaaa.png");
-//        productInfo.setProductDescription("这个很好哦");
-//        productInfo.setCategoryType(1);
-//        productService.save(productInfo);
+        ProductInfo productInfo = new ProductInfo();
+        Date date = new Date();
+        productInfo.setCreateTime(date);
+        productInfo.setUpdateTime(date);
+        productInfo.setProductStock(25);
+        productInfo.setProductStatus(ProductStatusEnum.DOWN.getCode());
+        productInfo.setProductPrice(new BigDecimal(21));
+        productInfo.setProductName("名称");
+        productInfo.setProductId("product2");
+        productInfo.setProductIcon("http://xxxaaaa.png");
+        productInfo.setProductDescription("这个很好哦");
+        productInfo.setCategoryType(1);
+        productService.save(productInfo);
     }
 }

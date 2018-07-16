@@ -31,15 +31,15 @@ public class FileController {
         String fileName = file.getOriginalFilename();
         /*System.out.println("fileName-->" + fileName);
         System.out.println("getContentType-->" + contentType);*/
-//        String filePath = request.getSession().getServletContext().getRealPath("imgupload/");
-        String filePath = "G:/webproject/sell/uploadfile/";
+        String filePath = request.getSession().getServletContext().getRealPath("imgupload/");
+//        String filePath = "G:/webproject/sell/uploadfile/";
         try {
             FileUtil.uploadFile(file.getBytes(), filePath, fileName);
         } catch (Exception e) {
 
         }
         //返回json
-        return filePath;
+        return filePath + ":" + fileName;
     }
 
     @RequestMapping(value = "download", method = RequestMethod.GET)

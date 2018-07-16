@@ -16,11 +16,11 @@ public class LoggerTest {
 
     @Test
     public void test1() {
-//        String name = "name";
-//        String password = "password";
-//        logger.debug("debug...");
-//        logger.info("info...name:{},password:{}", name, password);
-//        logger.error("error...");
-//        logger.warn("warn..");
+        String name = "name";
+        String password = "password";
+        logger.debug("debug...");
+        logger.info("info...name:{},password:{}", name, password);
+        logger.error("error...");
+        logger.warn("warn..");
     }
 }

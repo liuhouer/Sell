@@ -23,10 +23,10 @@ public class ProductCategoryRepositoryTest {
     //事物，做完之后自动回滚，service中是失败之后回滚
     @Transactional
     public void findOneTest() {
-//        ProductCategory productCategory = repository.getOne(2);
-//        System.out.print("---------------------\n");
-//        System.out.print(productCategory.toString() + "\n");
-//        System.out.print("---------------------\n");
+        ProductCategory productCategory = repository.getOne(2);
+        System.out.print("---------------------\n");
+        System.out.print(productCategory.toString() + "\n");
+        System.out.print("---------------------\n");
 
 //        List<ProductCategory> productCategory = repository.findAll();
 //        System.out.print("---------------------\n");
@@ -36,27 +36,27 @@ public class ProductCategoryRepositoryTest {
 
     @Test
     public void saveTest() {
-//        ProductCategory productCategory = new ProductCategory();
-//        productCategory.setCategoryId(2);
-//        productCategory.setCategoryName("老夫子最爱");
-//        productCategory.setCategoryType(3);
-//        Date date = new Date();
-//        productCategory.setCreateTime(date);
-//        productCategory.setUpdateTime(date);
-//        repository.save(productCategory);
+        ProductCategory productCategory = new ProductCategory();
+        productCategory.setCategoryId(2);
+        productCategory.setCategoryName("老夫子最爱");
+        productCategory.setCategoryType(3);
+        Date date = new Date();
+        productCategory.setCreateTime(date);
+        productCategory.setUpdateTime(date);
+        repository.save(productCategory);
     }
 
     @Test
     public void findByCategoryTypeIn() {
-//        List<Integer> list = new ArrayList<>();
-//        list.add(1);
-//        list.add(2);
-//        list.add(14);
-//        List<ProductCategory> list1 = repository.findByCategoryTypeIn(list);
-//        for (int i = 0; i < list1.size(); i++) {
-//            System.out.print("---------------------\n");
-//            System.out.print(list1.get(i).toString() + "\n");
-//            System.out.print("---------------------\n");
-//        }
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(14);
+        List<ProductCategory> list1 = repository.findByCategoryTypeIn(list);
+        for (int i = 0; i < list1.size(); i++) {
+            System.out.print("---------------------\n");
+            System.out.print(list1.get(i).toString() + "\n");
+            System.out.print("---------------------\n");
+        }
     }
 }

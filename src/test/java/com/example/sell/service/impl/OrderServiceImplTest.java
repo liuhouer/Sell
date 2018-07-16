@@ -32,104 +32,104 @@ public class OrderServiceImplTest {
     @Test
     @Transactional
     public void create() {
-//        OrderDTO orderDTO = new OrderDTO();
-//        orderDTO.setBuyerName("杨春");
-//        orderDTO.setBuyerAddress("我家");
-//        orderDTO.setBuyerOpenid(buyerOpenId);
-//        orderDTO.setBuyerPhone("18942335915");
-//        //购物车
-//        List<OrderDetail> orderDetailList = new ArrayList<>();
-//        OrderDetail o1 = new OrderDetail();
-//        Date date = new Date();
-//        o1.setCreateTime(date);
-//        o1.setUpdateTime(date);
-//        o1.setProductId("123456");
-//        o1.setProductQuantity(3);
-//        orderDetailList.add(o1);
-//
-//        orderDTO.setOrderAmount(new BigDecimal(9.6));
-//        orderDTO.setOrderDetailList(orderDetailList);
-//        orderDTO.setCreateTime(date);
-//        orderDTO.setUpdateTime(date);
-//        OrderDTO orderDTO1 = orderService.create(orderDTO);
-//        System.out.print("--------------------\n");
-//        System.out.print(orderDTO1.toString() + "\n");
-//        System.out.print("--------------------\n");
+        OrderDTO orderDTO = new OrderDTO();
+        orderDTO.setBuyerName("杨春");
+        orderDTO.setBuyerAddress("我家");
+        orderDTO.setBuyerOpenid(buyerOpenId);
+        orderDTO.setBuyerPhone("18942335915");
+        //购物车
+        List<OrderDetail> orderDetailList = new ArrayList<>();
+        OrderDetail o1 = new OrderDetail();
+        Date date = new Date();
+        o1.setCreateTime(date);
+        o1.setUpdateTime(date);
+        o1.setProductId("123456");
+        o1.setProductQuantity(3);
+        orderDetailList.add(o1);
+
+        orderDTO.setOrderAmount(new BigDecimal(9.6));
+        orderDTO.setOrderDetailList(orderDetailList);
+        orderDTO.setCreateTime(date);
+        orderDTO.setUpdateTime(date);
+        OrderDTO orderDTO1 = orderService.create(orderDTO);
+        System.out.print("--------------------\n");
+        System.out.print(orderDTO1.toString() + "\n");
+        System.out.print("--------------------\n");
     }
 
     @Test
     @Transactional
     public void findOne() {
-//        OrderDTO orderDTO = orderService.findOne(orderId);
-//        System.out.print("--------------------\n");
-//        System.out.print(orderDTO.toString() + "\n");
-//        System.out.print("--------------------\n");
+        OrderDTO orderDTO = orderService.findOne(orderId);
+        System.out.print("--------------------\n");
+        System.out.print(orderDTO.toString() + "\n");
+        System.out.print("--------------------\n");
     }
 
     @Test
     public void findList() {
-//        Page<OrderDTO> orderDTOPage = orderService.findList(buyerOpenId, PageRequest.of(0, 2));
-//        System.out.print("--------------------\n");
-//        for (int i = 0; i < orderDTOPage.getContent().size(); i++) {
-//            System.out.print(orderDTOPage.getContent().get(i) + "\n");
-//        }
-//
-//        System.out.print("--------------------\n");
+        Page<OrderDTO> orderDTOPage = orderService.findList(buyerOpenId, PageRequest.of(0, 2));
+        System.out.print("--------------------\n");
+        for (int i = 0; i < orderDTOPage.getContent().size(); i++) {
+            System.out.print(orderDTOPage.getContent().get(i) + "\n");
+        }
+
+        System.out.print("--------------------\n");
     }
 
     @Test
     @Transactional
     public void cancel() {
-//        OrderDTO orderDTO = orderService.findOne(orderId);
-//        System.out.print("--------------------\n");
-//        System.out.print(orderDTO.toString() + "\n");
-//        System.out.print("--------------------\n");
-//
-//        OrderDTO orderDTO1 = orderService.cancel(orderDTO);
-//        System.out.print("--------------------\n");
-//        System.out.print(orderDTO1.toString() + "\n");
-//        System.out.print("--------------------\n");
+        OrderDTO orderDTO = orderService.findOne(orderId);
+        System.out.print("--------------------\n");
+        System.out.print(orderDTO.toString() + "\n");
+        System.out.print("--------------------\n");
+
+        OrderDTO orderDTO1 = orderService.cancel(orderDTO);
+        System.out.print("--------------------\n");
+        System.out.print(orderDTO1.toString() + "\n");
+        System.out.print("--------------------\n");
     }
 
     @Test
     @Transactional
     public void finish() {
-//        OrderDTO orderDTO = orderService.findOne(orderId);
-//        System.out.print("--------------------\n");
-//        System.out.print(orderDTO.toString() + "\n");
-//        System.out.print("--------------------\n");
-//
-//        OrderDTO orderDTO1 = orderService.finish(orderDTO);
-//        System.out.print("--------------------\n");
-//        System.out.print(orderDTO1.toString() + "\n");
-//        System.out.print("--------------------\n");
+        OrderDTO orderDTO = orderService.findOne(orderId);
+        System.out.print("--------------------\n");
+        System.out.print(orderDTO.toString() + "\n");
+        System.out.print("--------------------\n");
+
+        OrderDTO orderDTO1 = orderService.finish(orderDTO);
+        System.out.print("--------------------\n");
+        System.out.print(orderDTO1.toString() + "\n");
+        System.out.print("--------------------\n");
     }
 
     @Test
     @Transactional
     public void paid() {
-//        OrderDTO orderDTO = orderService.findOne(orderId);
-//        System.out.print("--------------------\n");
-//        System.out.print(orderDTO.toString() + "\n");
-//        System.out.print("--------------------\n");
-//
-//        OrderDTO orderDTO1 = orderService.paid(orderDTO);
-//        System.out.print("--------------------\n");
-//        System.out.print(orderDTO1.toString() + "\n");
-//        System.out.print("--------------------\n");
+        OrderDTO orderDTO = orderService.findOne(orderId);
+        System.out.print("--------------------\n");
+        System.out.print(orderDTO.toString() + "\n");
+        System.out.print("--------------------\n");
+
+        OrderDTO orderDTO1 = orderService.paid(orderDTO);
+        System.out.print("--------------------\n");
+        System.out.print(orderDTO1.toString() + "\n");
+        System.out.print("--------------------\n");
 
     }
 
     @Test
     @Transactional
     public void list() {
-//        Page<OrderDTO> orderDTOPage = orderService.findList(PageRequest.of(0, 10));
-//        System.out.print("--------------------\n");
-//        for (int i = 0; i < orderDTOPage.getContent().size(); i++) {
-//            System.out.print(orderDTOPage.getContent().get(i) + "\n");
-//        }
-//
-//        System.out.print("--------------------\n");
+        Page<OrderDTO> orderDTOPage = orderService.findList(PageRequest.of(0, 10));
+        System.out.print("--------------------\n");
+        for (int i = 0; i < orderDTOPage.getContent().size(); i++) {
+            System.out.print(orderDTOPage.getContent().get(i) + "\n");
+        }
+
+        System.out.print("--------------------\n");
 
     }
 }

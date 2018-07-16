@@ -23,27 +23,27 @@ public class OrderDetailRepositoryTest {
 
     @Test
     public void saveTest() {
-//        OrderDetail orderDetail = new OrderDetail();
-//        Date date = new Date();
-//        orderDetail.setCreateTime(date);
-//        orderDetail.setUpdateTime(date);
-//        orderDetail.setDetailId("11223312");
-//        orderDetail.setOrderId("123456");
-//        orderDetail.setProductIcon("http://asdas.png");
-//        orderDetail.setProductName("小炒肉3");
-//        orderDetail.setProductPrice(new BigDecimal(23.4));
-//        orderDetail.setProductQuantity(24);
-//        orderDetail.setProductId("345678");
-//        orderDetailRepository.save(orderDetail);
+        OrderDetail orderDetail = new OrderDetail();
+        Date date = new Date();
+        orderDetail.setCreateTime(date);
+        orderDetail.setUpdateTime(date);
+        orderDetail.setDetailId("11223312");
+        orderDetail.setOrderId("123456");
+        orderDetail.setProductIcon("http://asdas.png");
+        orderDetail.setProductName("小炒肉3");
+        orderDetail.setProductPrice(new BigDecimal(23.4));
+        orderDetail.setProductQuantity(24);
+        orderDetail.setProductId("345678");
+        orderDetailRepository.save(orderDetail);
     }
 
     @Test
     public void findByOrderId() {
-//        List<OrderDetail> orderDetails = orderDetailRepository.findByOrderId("123456");
-//        System.out.print("-------------\n");
-//        for (OrderDetail orderDetail : orderDetails) {
-//            System.out.print(orderDetail.toString() + "\n");
-//        }
-//        System.out.print("-------------\n");
+        List<OrderDetail> orderDetails = orderDetailRepository.findByOrderId("123456");
+        System.out.print("-------------\n");
+        for (OrderDetail orderDetail : orderDetails) {
+            System.out.print(orderDetail.toString() + "\n");
+        }
+        System.out.print("-------------\n");
     }
 }

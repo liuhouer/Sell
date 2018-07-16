@@ -25,30 +25,30 @@ public class OrderMasterRepositoryTest {
 
     @Test
     public void saveTest() {
-//        OrderMaster orderMaster = new OrderMaster();
-//        orderMaster.setOrderId("1234567");
-//        orderMaster.setBuyerName("冰冰");
-//        orderMaster.setBuyerPhone("18942335915");
-//        orderMaster.setBuyerAddress("上海市");
-//        orderMaster.setBuyerOpenid("110110");
-//        orderMaster.setOrderAmount(new BigDecimal(2.3));
-//        Date date = new Date();
-//        orderMaster.setCreateTime(date);
-//        orderMaster.setUpdateTime(date);
-//        repository.save(orderMaster);
+        OrderMaster orderMaster = new OrderMaster();
+        orderMaster.setOrderId("1234567");
+        orderMaster.setBuyerName("冰冰");
+        orderMaster.setBuyerPhone("18942335915");
+        orderMaster.setBuyerAddress("上海市");
+        orderMaster.setBuyerOpenid("110110");
+        orderMaster.setOrderAmount(new BigDecimal(2.3));
+        Date date = new Date();
+        orderMaster.setCreateTime(date);
+        orderMaster.setUpdateTime(date);
+        repository.save(orderMaster);
     }
 
     @Test
     public void findByBuyerOpenid() {
-//        Sort sort = new Sort(Sort.Direction.DESC, "createTime");
-//        PageRequest request = PageRequest.of(0, 10, sort);
-//        Page<OrderMaster> result = repository.findByBuyerOpenid("110110", request);
-//        List<OrderMaster> list = result.getContent();
-//        System.out.print("-------------\n");
-//        for (OrderMaster orderMaster : list) {
-//            System.out.print(orderMaster.toString() + "\n");
-//        }
-//        System.out.print("-------------\n");
-//        System.out.print(result.getTotalElements());
+        Sort sort = new Sort(Sort.Direction.DESC, "createTime");
+        PageRequest request = PageRequest.of(0, 10, sort);
+        Page<OrderMaster> result = repository.findByBuyerOpenid("110110", request);
+        List<OrderMaster> list = result.getContent();
+        System.out.print("-------------\n");
+        for (OrderMaster orderMaster : list) {
+            System.out.print(orderMaster.toString() + "\n");
+        }
+        System.out.print("-------------\n");
+        System.out.print(result.getTotalElements());
     }
 }
