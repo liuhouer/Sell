@@ -90,7 +90,7 @@ public class BuyerOrderController {
 
     //取消订单
     @PostMapping("/cancel")
-    //@RequestBody 加入这个那么参数就是一个map（@RequestBody Map map），解析时就从map中获取数据进行解析
+    //@RequestBody 加入这个那么参数就是一个map（@RequestBody Map map），解析时就从map中获取数据进行解析,参数就是一个json对象
     public ResultVO cancel(@RequestParam("openid") String openid,
                            @RequestParam("orderId") String orderId) {
         logger.info(openid);
