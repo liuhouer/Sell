@@ -1,9 +1,12 @@
 package com.example.sell.service.impl;
 
+import com.example.sell.controller.SellerProductController;
 import com.example.sell.exception.SellException;
 import com.example.sell.service.RedisLock;
 import com.example.sell.service.SecKillService;
 import com.example.sell.utils.KeyUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +22,7 @@ public class SecKillServiceImpl implements SecKillService {
 
     private static final int TIMEOUT = 10 * 1000; //超时时间 10s
 
+    private final Logger logger = LoggerFactory.getLogger(SecKillServiceImpl.class);
     @Autowired
     private RedisLock redisLock;
 
@@ -60,7 +64,7 @@ public class SecKillServiceImpl implements SecKillService {
      */
     @Override
     public void orderProductMockDiffUser(String productId) {
-        //加锁
+        //加锁，假设同时有2个线程进入该方法
         long time = System.currentTimeMillis() + TIMEOUT;
         if (!redisLock.lock(productId, String.valueOf(time))) {
             throw new SellException(101, "人也太多了，请重试");

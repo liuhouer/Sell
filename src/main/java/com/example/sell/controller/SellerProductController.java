@@ -124,11 +124,12 @@ public class SellerProductController {
      * @return
      */
     @PostMapping("/save")
-    //使用redis缓存，每次都会执行这个方法，但会把每次返回的结果放入到redis中，保证所有的数据都是最新的
-    @CachePut(cacheNames = "product", key = "123")
-    //使用redis缓存，每次都会执行这个方法，但会把之前的数据清除，然后将最新的数据放入redis中，一般适用于前后端不分离的项目中
-//    @CacheEvict(cacheNames = "product", key = "123")
+    //使用redis缓存，每次都会执行这个方法，但会把每次返回的结果放入到redis中，保证所有的数据都是最新的，放入的数据为save方法返回的数据
+//    @CachePut(cacheNames = "product", key = "123")
+    //使用redis缓存，每次都会执行这个方法，但会把之前的数据清除，然后cachename为product的数据重新执行
+    @CacheEvict(cacheNames = "product", key = "123")
     public ResultVO save(@Valid ProductForm productForm, BindingResult bindingResult) {
+        logger.info(productForm.toString());
         if (bindingResult.hasErrors()) {
             logger.error("【创建商品】 参数不正确 ,orderForm{}", productForm);
             return ResultVOUtil.error(ResultEnum.PARAM_ERROR.getCode(), bindingResult.getFieldError().getDefaultMessage());

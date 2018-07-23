@@ -8,6 +8,8 @@ import com.example.sell.utils.ResultVOUtil;
 import com.example.sell.vo.ProductInfoVO;
 import com.example.sell.vo.ProductVO;
 import com.example.sell.vo.ResultVO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -32,6 +34,7 @@ public class BuyerProductController {
     @Autowired
     private CategoryService categoryService;
 
+    private final Logger logger = LoggerFactory.getLogger(BuyerProductController.class);
     /**
      * 获取所有商品
      *
@@ -44,6 +47,7 @@ public class BuyerProductController {
     //增加redis缓存，使用该缓存之后，第一次访问会进入该接口中，第二次访问就会从redis中访问
     @Cacheable(cacheNames = "product", key = "123")
     public ResultVO list() {
+        logger.info("list");
         //1.查询所有的上架商品
         List<ProductInfo> productInfoList = productService.findUpAll();
         //2.查询类目(一次性查询)
